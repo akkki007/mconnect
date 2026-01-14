@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "mconnnect",
+    "slug": "mconnnect",
+    "scheme": "mconnnect",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#e0f2fe"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mconnnect.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#e0f2fe"
+      },
+      "package": "com.mconnnect.app"
+    },
+    "web": {},
+    "plugins": [
+      "expo-asset",
+      "expo-router"
+    ]
+  }
+}
