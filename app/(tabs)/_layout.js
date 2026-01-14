@@ -5,31 +5,15 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarShowLabel: false,
         tabBarStyle: { display: 'none' },
       }}
     >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarButton: () => null,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarButton: () => null,
-        }}
-      />
-      <Tabs.Screen
-        name="signup"
-        options={{
-          title: 'Sign Up',
-          tabBarButton: () => null,
-        }}
-      />
+      <Tabs.Screen name="welcome" />
+      <Tabs.Screen name="explore" />
+      <Tabs.Screen name="login" />
+      <Tabs.Screen name="signup" />
+      <Tabs.Screen name="updates" />
+      <Tabs.Screen name="create-post" />
     </Tabs>
   );
 }

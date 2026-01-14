@@ -24,7 +24,7 @@ export default function ExploreScreen() {
         <Pressable
           className="bg-white px-7 py-3 rounded-2xl shadow-lg shadow-black/20"
           android_ripple={{ color: '#e5e7eb', borderless: false }}
-          onPress={() => router.back()}
+          onPress={() => router.push('/(tabs)/login')}
         >
           <Text className="text-black text-lg font-montserrat">Log In</Text>
         </Pressable>
