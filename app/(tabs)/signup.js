@@ -1,4 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from "expo-status-bar";
 import {
   SafeAreaView,
   ScrollView,
@@ -7,8 +7,8 @@ import {
   TextInput,
   TouchableOpacity,
   Pressable,
-} from 'react-native';
-import { useRouter } from 'expo-router';
+} from "react-native";
+import { useRouter } from "expo-router";
 
 export default function SignupScreen() {
   const router = useRouter();
@@ -40,7 +40,7 @@ export default function SignupScreen() {
         showsVerticalScrollIndicator={false}
       >
         <Text className="text-center text-[24px] leading-8 text-black font-montserrat-bold">
-          Create an account to{'\n'}continue
+          Create an account to{"\n"}continue
         </Text>
 
         <View className="mt-10">
@@ -90,13 +90,16 @@ export default function SignupScreen() {
         <TouchableOpacity
           className="mt-12 bg-white rounded-2xl border border-gray-200 shadow-lg shadow-black/15 py-4 items-center"
           activeOpacity={0.85}
+          onPress={() => router.push("/(tabs)/profile_personal")}
         >
-          <Text className="text-lg text-gray-900 font-montserrat">Continue</Text>
+          <Text className="text-lg text-gray-900 font-montserrat">
+            Continue
+          </Text>
         </TouchableOpacity>
 
         <View className="mt-6 items-center">
           <Text className="text-sm text-gray-700 font-opensans">
-            Already have an account?{' '}
+            Already have an account?{" "}
             <Text
               className="text-blue-600 font-opensans"
               onPress={() => router.back()}
