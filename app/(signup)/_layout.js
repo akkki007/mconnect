@@ -3,7 +3,6 @@ import { Tabs } from 'expo-router';
 export default function TabLayout() {
   return (
     <Tabs
-      initialRouteName="index"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -11,19 +10,26 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="signup-form"
         options={{
-          title: 'Welcome to Connect',
+          title: 'Signup Form',
           tabBarButton: () => null,
         }}
       />
-      <Tabs.Screen
-        name="auth-options"
+      {/* <Tabs.Screen
+        name="signup-form"
         options={{
-          title: 'Connect & Collaborate With Professionals',
+          title: 'Signup Form',
           tabBarButton: () => null,
         }}
-      />
+      /> */}
+      {/* <Tabs.Screen
+        name="signup"
+        options={{
+          title: 'Sign Up',
+          tabBarButton: () => null,
+        }}
+      /> */}
     </Tabs>
   );
 }

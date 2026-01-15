@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { View, Text, SafeAreaView, Image, Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
 
-export default function ExploreScreen() {
+export default function AuthOptionsScreen() {
   const router = useRouter();
 
   return (
@@ -31,7 +31,7 @@ export default function ExploreScreen() {
         <Pressable
           className="bg-[#1D68D9] px-7 py-3 rounded-2xl shadow-lg shadow-black/25"
           android_ripple={{ color: '#1d4ed8', borderless: false }}
-          onPress={() => router.push('/(tabs)/signup')}
+          onPress={() => router.push('/(signup)/signup-form')}
         >
           <Text className="text-white text-lg font-montserrat">Sign Up</Text>
         </Pressable>

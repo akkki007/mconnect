@@ -3,7 +3,6 @@ import { Tabs } from 'expo-router';
 export default function TabLayout() {
   return (
     <Tabs
-      initialRouteName="index"
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -11,16 +10,23 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="login-phone"
         options={{
-          title: 'Welcome to Connect',
+          title: 'Phone Login',
           tabBarButton: () => null,
         }}
       />
       <Tabs.Screen
-        name="auth-options"
+        name="login-otp-verification"
         options={{
-          title: 'Connect & Collaborate With Professionals',
+          title: 'OTP Verification',
+          tabBarButton: () => null,
+        }}
+      />
+      <Tabs.Screen
+        name="occupation-selection"
+        options={{
+          title: 'Occupation Selection',
           tabBarButton: () => null,
         }}
       />

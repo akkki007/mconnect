@@ -29,7 +29,7 @@ export default function WelcomeScreen() {
         <TouchableOpacity
           className="bg-white rounded-2xl py-4 px-10 shadow-lg items-center"
           activeOpacity={0.85}
-          onPress={() => router.push('/(tabs)/explore')}
+          onPress={() => router.push('/(tabs)/auth-options')}
         >
           <Text className="text-black text-xl font-thin font-montserrat">
             Continue
