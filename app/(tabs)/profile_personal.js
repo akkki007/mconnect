@@ -9,8 +9,10 @@ import {
   Switch,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 export default function ProfileScreen() {
+  const router = useRouter();
   const [selectedTab, setSelectedTab] = useState("Personal");
 
   const [businessOptions, setBusinessOptions] = useState([
@@ -48,7 +50,9 @@ export default function ProfileScreen() {
             </Text>
           </View>
 
-          <Ionicons name="settings-outline" size={34} color="#000" />
+          <TouchableOpacity onPress={() => router.push("/Settings")}>
+            <Ionicons name="settings-outline" size={34} color="#000" />
+          </TouchableOpacity>
         </View>
       </View>
 
