@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   ScrollView,
@@ -6,16 +6,40 @@ import {
   Text,
   Image,
   TouchableOpacity,
+  Switch,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function ProfileScreen() {
+  const [selectedTab, setSelectedTab] = useState("Personal");
+
+  const [businessOptions, setBusinessOptions] = useState([
+    { id: "availableForWork", text: "Available for work?", value: true },
+    {
+      id: "readyForVolunteering",
+      text: "Ready for Volunteering?",
+      value: true,
+    },
+    { id: "acceptingOrders", text: "Accepting Orders?", value: false },
+    { id: "searchable", text: "Want Others to Search You?", value: true },
+    { id: "shareMobile", text: "Want to Share Mobile?", value: true },
+    { id: "shareEmail", text: "Want to Share Email?", value: false },
+  ]);
+
+  const handleToggleChange = (id, newValue) => {
+    setBusinessOptions((prevOptions) =>
+      prevOptions.map((option) =>
+        option.id === id ? { ...option, value: newValue } : option
+      )
+    );
+  };
+
   return (
     <SafeAreaView className="flex-1 bg-[#D6EAF3]">
       <View className="h-10 bg-[#D6EAF3]" />
 
       {/* Header */}
-      <View className="pt-4 pb-5 bg-[#D6EAF3]">
+      <View className="  bg-[#D6EAF3]">
         <View className="flex-row items-center justify-between px-5">
           <View className="flex-row items-center space-x-3">
             <Ionicons name="menu" size={24} color="#000" />
@@ -33,7 +57,7 @@ export default function ProfileScreen() {
         contentContainerStyle={{ paddingBottom: 120 }}
       >
         {/* Profile Card */}
-        <View className="mx-0.5 mt-2 bg-[#CFE5EF] rounded-3xl p-4">
+        <View className="mx-0.5  bg-[#CFE5EF] rounded-3xl px-4 py-2">
           <View className="flex-row items-center">
             {/* Avatar */}
             <Image
@@ -79,41 +103,101 @@ export default function ProfileScreen() {
         </View>
 
         {/* Tabs */}
-        <View className="flex-row bg-white mx-5 mt-2 rounded-full  ">
-          <TouchableOpacity className="flex-1 bg-[#9C4A2F] py-2 rounded-full">
-            <Text className="text-center text-white font-montserrat">
+        <View className="flex-row bg-white mx-5 rounded-full  ">
+          <TouchableOpacity
+            className={`flex-1 py-2 rounded-full ${
+              selectedTab === "Personal" ? "bg-[#9C4A2F]" : ""
+            }`}
+            onPress={() => setSelectedTab("Personal")}
+          >
+            <Text
+              className={`text-center font-montserrat ${
+                selectedTab === "Personal" ? "text-white" : "text-gray-700"
+              }`}
+            >
               Personal
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className="flex-1 py-2">
-            <Text className="text-center text-gray-700 font-montserrat">
+          <TouchableOpacity
+            className={`flex-1 py-2 rounded-full ${
+              selectedTab === "Business" ? "bg-[#9C4A2F]" : ""
+            }`}
+            onPress={() => setSelectedTab("Business")}
+          >
+            <Text
+              className={`text-center font-montserrat ${
+                selectedTab === "Business" ? "text-white" : "text-gray-700"
+              }`}
+            >
               Business
             </Text>
           </TouchableOpacity>
         </View>
 
-        {/* About Us */}
-        <View className="mt-6 px-5">
-          <View className="flex-row items-center justify-between mb-3">
-            <Text className="text-lg text-black font-inter-bold">About Us</Text>
-          </View>
+        {/* Personal Tab Content */}
+        {selectedTab === "Personal" && (
+          <>
+            {/* About Us */}
+            <View className="mt-6 px-5">
+              <View className="flex-row items-center justify-between mb-3">
+                <Text className="text-lg text-black font-montserrat-bold">
+                  About Us
+                </Text>
+              </View>
 
-          <View className="bg-white rounded-2xl p-5 shadow-lg border border-gray-100">
-            <View className="flex-row mb-2">
-              <Text className="text-base text-gray-800 font-opensans leading-6 flex-1">
-                Hello there!! {"\n\n"}
-                My name is Ethan Carter. I am a software Engineer at Rootkit
-                Consultancy.
-              </Text>
-              <View>
-                <TouchableOpacity className="bg-[#5f53c8] rounded-full p-1">
-                  <Ionicons name="pencil" size={12} color="#fff" />
-                </TouchableOpacity>
+              <View className="bg-white rounded-2xl p-5 shadow-lg border border-gray-100">
+                <View className="flex-row mb-2">
+                  <Text className="text-base text-gray-800 font-opensans leading-6 flex-1">
+                    Hello there!! {"\n\n"}
+                    My name is Ethan Carter. I am a software Engineer at Rootkit
+                    Consultancy.
+                  </Text>
+                  <View>
+                    <TouchableOpacity className="bg-[#5f53c8] rounded-full p-1">
+                      <Ionicons name="pencil" size={12} color="#fff" />
+                    </TouchableOpacity>
+                  </View>
+                </View>
               </View>
             </View>
-          </View>
-        </View>
+          </>
+        )}
+
+        {/* Business Tab Content */}
+        {selectedTab === "Business" && (
+          <>
+            {/* Power to You */}
+            <View className="mt-4 px-5">
+              <View className="flex-row items-center justify-between mb-3">
+                <Text className="text-lg text-black font-inter-bold">
+                  Power to You
+                </Text>
+              </View>
+
+              <View className="bg-white min-w-80 min-h-44 rounded-2xl px-8 py-4 shadow-lg border border-gray-100">
+                {businessOptions.map((option, index) => (
+                  <View
+                    key={option.id}
+                    className={`flex-row items-center justify-between`}
+                  >
+                    <Text className="text-base text-gray-800 font-opensans ">
+                      {option.text}
+                    </Text>
+                    <Switch
+                      value={option.value}
+                      onValueChange={(value) =>
+                        handleToggleChange(option.id, value)
+                      }
+                      trackColor={{ false: "#D1D5DB", true: "#9C4A2F" }}
+                      thumbColor="#fff"
+                    />
+                  </View>
+                ))}
+              </View>
+            </View>
+          </>
+        )}
 
         {/* Contact */}
         <View className="mt-6 px-5">
