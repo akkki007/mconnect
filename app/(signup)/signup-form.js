@@ -136,6 +136,7 @@ export default function SignupFormScreen() {
           <TouchableOpacity
             className="bg-white rounded-2xl border border-[#E2E2E2] shadow-lg shadow-black/15 py-4 items-center w-full"
             activeOpacity={0.85}
+            onPress={() => router.push('/screens/ChatListScreen')}
           >
             <Text className="text-lg text-gray-900 font-montserrat">
               Continue
