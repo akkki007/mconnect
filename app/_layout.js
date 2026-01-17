@@ -31,6 +31,9 @@ export default function RootLayout() {
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="Settings" options={{ headerShown: false }} />
+      <Stack.Screen name="anonymous/following" options={{ headerShown: false }} />
+      <Stack.Screen name="anonymous/vendors_list" options={{ headerShown: false }} />
+      <Stack.Screen name="orders" options={{ headerShown: false }} />
     </Stack>
   );
 }

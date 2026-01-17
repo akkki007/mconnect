@@ -1,116 +1,97 @@
-import React from "react";
-import {
-  SafeAreaView,
-  ScrollView,
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-} from "react-native";
-import { useRouter } from "expo-router";
+import { ScrollView, Text, View, Image, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useRouter } from "expo-router";
+
+const profileFields = [
+  "Name",
+  "Occupation",
+  "Company Name",
+  "Email Id",
+  "Phone Number",
+  "School Name",
+  "College Name",
+  "Address Line 1",
+  "Address Line 2",
+  "City",
+  "State",
+  "Zip Code",
+];
 
 export default function SettingsScreen() {
   const router = useRouter();
-  const settingsOptions = [
-    {
-      id: "account",
-      title: "Account",
-      description: "Privacy, security, change number",
-      icon: "key-outline",
-    },
-    {
-      id: "chat",
-      title: "Chat",
-      description: "Chat history, theme, wallpapers",
-      icon: "chatbubble-outline",
-    },
-    {
-      id: "notification",
-      title: "Notification",
-      description: "Messages, group and others",
-      icon: "notifications-outline",
-    },
-    {
-      id: "help",
-      title: "Help",
-      description: "Help center, contact us, privacy policy",
-      icon: "help-circle-outline",
-    },
-    {
-      id: "storage",
-      title: "Storage & Data",
-      description: "Network usage, storage usage",
-      icon: "information-circle-outline",
-    },
-  ];
 
   return (
-    <SafeAreaView className="flex-1 bg-[#D6EAF3]">
-      {/* Status Bar Spacer */}
-      <View className="h-10 bg-[#D6EAF3]" />
-
-      {/* Header */}
-      <View className="px-5 py-4 bg-[#D6EAF3]">
-        <View className="flex-row items-center">
-          <TouchableOpacity className="mr-4" onPress={() => router.back()}>
-            <Ionicons name="chevron-back" size={24} color="#000" />
-          </TouchableOpacity>
-          <Text className="text-xl font-semibold text-black font-opensans">
-            Settings
-          </Text>
-        </View>
-      </View>
-
+    <SafeAreaView
+      className="flex-1 bg-[#c7dbed]"
+      edges={["top", "bottom"]}
+    >
       <ScrollView
+        className="flex-1"
+        contentContainerStyle={{ paddingBottom: 40 }}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 20 }}
       >
-        {/* Profile Section */}
-        <View className="px-5 mt-10 mb-10">
-          <View className="flex-row items-center">
-            <Image
-              source={{ uri: "https://i.pravatar.cc/150?img=12" }}
-              className="w-16 h-16 rounded-full"
-            />
-            <View className="ml-4">
-              <Text className="text-[20px]  font-semibold text-black font-opensans-bold">
-                Nazrul Islam
-              </Text>
-              <Text className="text-sm text-gray-600 font-opensans">
-                Never give up 💪
-              </Text>
+        <View className="bg-[#c7dbed] border-b border-[#b6c7d8] px-4 pb-3 pt-8 shadow-sm shadow-[#122430]/10">
+          <View className="flex-row items-center justify-between">
+            <TouchableOpacity
+              className="rounded-full p-2"
+              onPress={() => router.back()}
+            >
+              <Ionicons name="chevron-back" size={24} color="#0f172a" />
+            </TouchableOpacity>
+            <Text className="text-[20px] font-semibold tracking-wide text-[#0f172a]">
+              Profile Settings
+            </Text>
+            <View style={{ width: 32 }} />
+          </View>
+        </View>
+
+        <View className="px-4 pt-6">
+
+          <View className="items-center mt-4">
+            <View className="h-[109px] w-[109px] rounded-full ">
+              <Image
+                source={{
+                  uri: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+                }}
+                className="h-full w-full rounded-full image-cover"
+              />
+              <TouchableOpacity
+                className="bg-[#9F583C] rounded-full p-1 absolute bottom-0 right-0 z-10 h-6 w-6 items-center justify-center ">
+                <Ionicons name="pencil" size={12} color="#fff" />
+              </TouchableOpacity>
             </View>
           </View>
         </View>
 
-        {/* Settings Options Card */}
-        <View className="mx-5 bg-white rounded-3xl p-4 shadow-lg">
-          {settingsOptions.map((option, index) => (
-            <TouchableOpacity
-              key={option.id}
-              className={`flex-row items-center py-4 ${
-                index < settingsOptions.length - 1
-                  ? "border-b border-gray-100"
-                  : ""
-              }`}
+        <View className="mx-4 mt-6 rounded-[32px] bg-white px-5 py-6 shadow-xl">
+          {profileFields.map((field, index) => (
+            <View
+              key={field}
+              className={`flex-row items-center justify-between border-b border-[#e2e8f0] py-3 ${index === profileFields.length - 1 ? "border-b-0" : ""
+                }`}
             >
-              {/* Icon Container */}
-              <View className="w-12 h-12 rounded-full bg-[#9C4A2F] items-center  justify-center">
-                <Ionicons name={option.icon} size={24} color="#fff" />
-              </View>
-
-              {/* Text Content */}
-              <View className="ml-4 flex-1">
-                <Text className="text-lg font-bold text-black font-opensans">
-                  {option.title}
-                </Text>
-                <Text className="text-sm text-gray-500 font-opensans mt-0.5">
-                  {option.description}
-                </Text>
-              </View>
-            </TouchableOpacity>
+              <Text className="text-sm font-semibold tracking-wider text-[#a7b0ba]">
+                {field}
+              </Text>
+              <TouchableOpacity className="h-6 w-6 items-center justify-center rounded-full border border-[#9C4A2F] bg-[#fff8f1]">
+                <Ionicons name="pencil" size={14} color="#9C4A2F" />
+              </TouchableOpacity>
+            </View>
           ))}
+
+          <View className="mt-3 flex-row items-center justify-between">
+            <View className="flex-1 border-b border-[#e2e8f0] pb-4">
+              <Text className="text-sm font-semibold tracking-[0.2em] text-[#a7b0ba] italic">
+                Age
+              </Text>
+            </View>
+            <View className="ml-4 flex-1 border-b border-[#e2e8f0] pb-4">
+              <Text className="text-sm font-semibold tracking-[0.2em] text-[#a7b0ba] italic">
+                Gender
+              </Text>
+            </View>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
